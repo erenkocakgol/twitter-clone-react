@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-twitter-background text-twitter-black;
+  }
+
+  * {
+    @apply border-twitter-extraLightGray;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 font-medium rounded-full 
+           transition-all duration-200 ease-out focus:outline-none focus:ring-2 
+           focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-twitter-blue text-white hover:bg-twitter-darkBlue 
+           focus:ring-twitter-blue shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-twitter-blue border border-twitter-blue 
+           hover:bg-primary-50 focus:ring-twitter-blue;
+  }
+
+  .btn-danger {
+    @apply btn bg-accent-heart text-white hover:bg-red-600 
+           focus:ring-accent-heart;
+  }
+
+  .btn-ghost {
+    @apply btn text-twitter-darkGray hover:bg-twitter-extraLightGray 
+           hover:text-twitter-blue;
+  }
+
+  .btn-icon {
+    @apply inline-flex items-center justify-center p-2 rounded-full 
+           text-twitter-darkGray hover:bg-twitter-extraLightGray 
+           transition-colors duration-200;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 bg-white border border-twitter-extraLightGray 
+           rounded-lg text-twitter-black placeholder-twitter-lightGray
+           focus:outline-none focus:border-twitter-blue focus:ring-1 
+           focus:ring-twitter-blue transition-all duration-200;
+  }
+
+  .input-error {
+    @apply border-accent-heart focus:border-accent-heart focus:ring-accent-heart;
+  }
+
+  .card {
+    @apply bg-white border-b border-twitter-extraLightGray;
+  }
+
+  .card-elevated {
+    @apply bg-white rounded-xl shadow-card hover:shadow-card-hover 
+           transition-shadow duration-200;
+  }
+
+  .link {
+    @apply text-twitter-blue hover:underline cursor-pointer;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-700;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 text-green-700;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-700;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-100 text-red-700;
+  }
+
+  .tab {
+    @apply px-4 py-3 font-medium text-twitter-darkGray hover:bg-twitter-extraLightGray
+           hover:text-twitter-blue transition-all duration-200 border-b-2 
+           border-transparent cursor-pointer;
+  }
+
+  .tab-active {
+    @apply tab text-twitter-blue border-twitter-blue;
+  }
+
+  .dropdown {
+    @apply absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-modal 
+           border border-twitter-extraLightGray overflow-hidden z-50 
+           animate-scale-in origin-top-right;
+  }
+
+  .dropdown-item {
+    @apply w-full px-4 py-3 text-left text-sm hover:bg-twitter-background 
+           transition-colors duration-150 flex items-center gap-3;
+  }
+
+  .avatar {
+    @apply rounded-full object-cover bg-twitter-extraLightGray;
+  }
+
+  .skeleton {
+    @apply bg-twitter-extraLightGray animate-pulse rounded;
+  }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center 
+           z-50 animate-fade-in;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-2xl shadow-modal max-w-lg w-full mx-4 
+           animate-scale-in max-h-[90vh] overflow-y-auto;
+  }
+
+  .tooltip {
+    @apply absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 
+           px-2 py-1 text-xs text-white bg-twitter-black rounded 
+           opacity-0 group-hover:opacity-100 transition-opacity duration-200 
+           pointer-events-none whitespace-nowrap;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Transitions for route changes */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
